@@ -9,11 +9,34 @@
 
 <body>
   <div class="container-page">
-    <video id="background-video" autoplay muted loop>
+    <video id="background-video" muted loop playsinline>
       <source src="./nowee.mp4" type="video/mp4">
       Seu navegador não suporta vídeos em HTML5.
     </video>
+    <!-- Botão de Play -->
+    <button id="playButton" class="play-button">Play Video</button>
   </div>
 </body>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var video = document.getElementById('background-video');
+    var playButton = document.getElementById('playButton');
+
+    // Tenta dar autoplay
+    video.play().then(() => {
+      // Se o vídeo tocar, esconde o botão
+      playButton.style.display = 'none';
+    }).catch(() => {
+      // Se não tocar, mostra o botão
+      playButton.style.display = 'block';
+    });
+
+    // Adiciona o evento de clique no botão de play
+    playButton.addEventListener('click', function () {
+      video.play();
+      playButton.style.display = 'none'; // Esconde o botão após o play
+    });
+  });
+</script>
 </html>
