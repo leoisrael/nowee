@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "nowee",
     "public": "public",
     "ignore": [
       "firebase.json",
